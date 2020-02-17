@@ -67,8 +67,8 @@ footer-text: Copyright (c) 2020 来自南京
 gitalk:
   clientID: 371c9d18b5cbea10296d
   clientSecret: b7dfd6de4bd4dfa7788b450624c2d933a4afe9bb
-  repo:
-  owner:
+  repo: susy123.github.io
+  owner: Susy123
 
 # 输入Google Analytics web tracking code
 google_analytics:
