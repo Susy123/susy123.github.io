@@ -61,14 +61,14 @@ footer-text: Copyright (c) 2020 来自南京
 # 评论，注意，请不要同时添加多种不同的评论区
 
 # 输入Disqus shortname，即可添加评论区
-disqus: loffer #shortname
+#disqus: loffer #shortname
 
 # 输入Gitalk相关设定，即可添加评论区
-#gitalk:
-#  clientID:
-#  clientSecret:
-#  repo:
-#  owner:
+gitalk:
+  clientID: 371c9d18b5cbea10296d
+  clientSecret: b7dfd6de4bd4dfa7788b450624c2d933a4afe9bb
+  repo:
+  owner:
 
 # 输入Google Analytics web tracking code
 google_analytics:
