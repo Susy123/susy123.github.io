@@ -5,6 +5,7 @@ date: 2020-02-16
 Author: Susy123
 tags: [eslint, stylelint, prettier, lint-staged]
 comments: true
+toc: true
 ---
 提高代码质量，推动代码规范，从源头把控软件产品质量，已经在研发体系形成共识。
 之前采取过的方式有：
