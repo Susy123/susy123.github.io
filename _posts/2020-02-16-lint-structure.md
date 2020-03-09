@@ -70,35 +70,35 @@ eslint和stylelint的推荐规则，能够报告一些常见的问题，这些�
 
 ```javascript
 module.exports = {
-  meta: {
-    type: 'problem',
-  },
-  create(context) {
-    return {
-      MemberExpression(node) {
-        if (node.object.name && node.object.name === '$') {
-          if (node.property && node.property.name === 'ajax') {
-            context.report({
-              node: node,
-              message: '禁止调用{{ identifier }}方法,请使用ajaxRun方法',
-              data: {
-                identifier: node.object.name + '.' + node.property.name,
-              },
-            })
-          }
-        }
-      },
-    }
-  },
+    meta: {
+        type: 'problem',
+    },
+    create(context) {
+        return {
+            MemberExpression(node) {
+                if (node.object.name && node.object.name === '$') {
+                    if (node.property && node.property.name === 'ajax') {
+                        context.report({
+                            node: node,
+                            message: '禁止调用{{ identifier }}方法,请使用ajaxRun方法',
+                            data: {
+                                identifier: node.object.name + '.' + node.property.name,
+                            },
+                        })
+                    }
+                }
+            },
+        }
+    },
 }
 ```
 这样我们就定义好了一个规则，在这个规则中:
 
-1) meta: 用于定义这个规则的一些元数据（metadata）比如示例中的type，这里定义为problem，还可以定义其他的一些属性，比如message.
-2) create: 带有一个 context 参数，它提供了一些非常有用的方法来帮助我们实现规则，在遍历代码抽象语法树（AST）时可以调用。
-3) 选择器：用来过滤我们想要的语法树节点。比如我们这里禁止使用的方法 $.ajax 就是属于 MemberExpression。
-4) node: 遍历语法树时获取的每个节点，它有很多属性可供读取使用，比如这里的property、name等。
-5) context.report: 用来向用户报告错误信息。
+1. meta: 用于定义这个规则的一些元数据（metadata）比如示例中的type，这里定义为problem，还可以定义其他的一些属性，比如message.
+2. create: 带有一个 context 参数，它提供了一些非常有用的方法来帮助我们实现规则，在遍历代码抽象语法树（AST）时可以调用。
+3. 选择器：用来过滤我们想要的语法树节点。比如我们这里禁止使用的方法 $.ajax 就是属于 MemberExpression。
+4. node: 遍历语法树时获取的每个节点，它有很多属性可供读取使用，比如这里的property、name等。
+5. context.report: 用来向用户报告错误信息。
 
 写好自定义规则后如何执行？使用--rulesdir参数指定刚刚的rules路径，并在rc文件里配置相应的规则及其问题等级（规则名即为刚刚创建的规则文件的名字）。
 
@@ -159,13 +159,19 @@ b) 若仍然强烈希望更改，可提交需求到架构组，将在讨论后�
 ![structure.png](https://i.loli.net/2020/03/10/jXNgweKLV98OEBQ.png)
 
 ## 3.1 本地lint
+
 1. 约定团队开发采用 vscode 编辑器，并安装eslint及stylelint插件辅助开发;
 2. 安装 eslint + stylelint + prettier + yokie + lint-staged，并配置相应的配置文件。可将相应配置集成在脚手架中，更方便生成项目。
+
 ## 3.2 提交阶段
+
 提交阶段自动执行的流程如下图所示：
 ![progress.png](https://i.loli.net/2020/03/10/EeAMxfVkc5C1QwZ.png)
+
 ## 3.4 逐步提高代码质量
+
 获得代码分析结果后，我们推荐的改进建议是：
+
 1. 分优先级逐步改进，对于error级别的告警，需要第一时间进行确认和修改，因为这一般意味着相应的代码块存在着潜在的bug，对于warning级别的告警，采用“小步慢跑”的策略，在后续的开发工作中一步步进行修正。
 2. 相对于遗留代码，新增代码要有更严格的要求。（可根据时间线查看问题数量）
 3. 使用编辑器lint插件辅助开发，以及本地lint指令进行快速检测，不让代码问题遗留到最后一步。
