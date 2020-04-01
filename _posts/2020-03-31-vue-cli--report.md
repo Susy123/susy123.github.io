@@ -67,3 +67,5 @@ npm 对不起，是我不够了解你 。再来一次：
 （还是觉得这个用法有点不符合习惯。）
 
 当然除了用 yarn build --report, 也可以在 package.json 里面增加 scripts. 只要姿势对，repoort.html 就会出现。
+
+[个人 blog](https://susy123.github.io/)
